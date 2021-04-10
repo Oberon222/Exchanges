@@ -6,12 +6,12 @@ using System.Threading.Tasks;
 
 namespace DAL
 {
-    public class UnitOfWork : IDisposable
+    public class UnitOfWork : IUnitOfWork
     {
         private ExchangeModel context = new ExchangeModel();
         private GenericRepository<Exchange> exchangeRepository;
 
-        public GenericRepository<Exchange> ExchangeRepos
+        public IRepository<Exchange> ExchangeRepos
         {
             get
             {
