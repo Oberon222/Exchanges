@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace DAL
 {
-    public class GenericRepository<TEntity> where TEntity : class
+    public class GenericRepository<TEntity> : IRepository<TEntity> where TEntity : class
     {
         internal ExchangeModel context;
         internal DbSet<TEntity> dbSet;
@@ -47,7 +47,7 @@ namespace DAL
             }
         }
 
-        public virtual TEntity GetByID(object id)
+        public virtual TEntity GetById(int id)
         {
             return dbSet.Find(id);
         }
@@ -57,7 +57,7 @@ namespace DAL
             dbSet.Add(entity);
         }
 
-        public virtual void Delete(object id)
+        public virtual void Delete(int id)
         {
             TEntity entityToDelete = dbSet.Find(id);
             Delete(entityToDelete);
